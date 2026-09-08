@@ -69,7 +69,7 @@ a { color: inherit; }
   background: var(--stamp);
 }
 
-.hero__name {Daniella Pisciotti Galeano}
+.hero__name {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(2.4rem, 5vw, 3.4rem);
