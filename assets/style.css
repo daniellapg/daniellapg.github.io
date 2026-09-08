@@ -1,0 +1,305 @@
+/* =========================================================
+   Design tokens
+   ========================================================= */
+:root {
+  --ink:        #14213D;   /* primary text / headline */
+  --paper:      #EDEFF3;   /* page background, cool off-white */
+  --card:       #FFFFFF;   /* card surfaces */
+  --stamp:      #B5651D;   /* restrained accent — rubber-stamp amber/rust */
+  --slate:      #5B6472;   /* secondary text */
+  --line:       #D6DAE2;   /* hairline dividers */
+  --line-dark:  #A9B0BD;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* =========================================================
+   Layout shell
+   ========================================================= */
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================================================
+   Hero / about
+   ========================================================= */
+.hero {
+  padding: 88px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero__eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--stamp);
+}
+
+.hero__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.hero__role {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--slate);
+  margin: 0 0 28px;
+}
+
+.hero__bio {
+  max-width: 58ch;
+  font-size: 1.05rem;
+  color: #2B3245;
+  margin: 0 0 28px;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.hero__meta a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.hero__meta a:hover {
+  color: var(--stamp);
+  border-color: var(--stamp);
+}
+
+/* =========================================================
+   Index of documents (the signature element)
+   ========================================================= */
+.index {
+  padding: 56px 0 100px;
+}
+
+.index__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 22px;
+}
+
+.file {
+  display: block;
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 22px 24px 22px 88px;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.file:hover {
+  border-color: var(--stamp);
+  transform: translateX(2px);
+  box-shadow: 0 4px 18px rgba(20, 33, 61, 0.08);
+}
+
+.file__tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--stamp);
+  border-right: 1px dashed var(--line-dark);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.08em;
+}
+
+.file__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+}
+
+.file__desc {
+  font-size: 0.95rem;
+  color: var(--slate);
+  margin: 0 0 10px;
+  max-width: 56ch;
+}
+
+.file__open {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.file__open::after {
+  content: "→";
+  transition: transform 0.15s ease;
+}
+
+.file:hover .file__open::after {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0 60px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--line-dark);
+}
+
+/* =========================================================
+   Project / document page
+   ========================================================= */
+.doc-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.doc-header__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.back-link:hover {
+  border-color: var(--stamp);
+  color: var(--stamp);
+  background: #FBF4EC;
+}
+
+.back-link::before {
+  content: "←";
+}
+
+.doc-header__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.doc-header__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--stamp);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.doc-viewer {
+  max-width: 1000px;
+  margin: 24px auto 60px;
+  padding: 0 24px;
+}
+
+.doc-frame {
+  width: 100%;
+  height: 82vh;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--card);
+  box-shadow: 0 8px 30px rgba(20, 33, 61, 0.07);
+}
+
+.doc-fallback {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--slate);
+  text-align: center;
+}
+
+.doc-fallback a {
+  color: var(--stamp);
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 64px 0 40px; }
+  .file { padding: 20px 18px 20px 70px; }
+  .file__tag { width: 52px; font-size: 11px; }
+  .doc-frame { height: 75vh; }
+}
